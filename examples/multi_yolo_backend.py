@@ -13,8 +13,11 @@ class MultiYolo():
     def __init__(self, model, device, args):
         self.args = args
         self.device = device
-        
-        self.model_name = str(model.stem).lower()
+        if not (isinstance(model, str) or isinstance(model, Path)):
+            self.model_name = 'yolov8'
+            self.model = model
+        else:
+            self.model_name = str(model.stem).lower()
 
         if 'yolov8' in self.model_name:
             self.model = model
