@@ -145,8 +145,6 @@ class ReIDDetectMultiBackend(nn.Module):
         self.preprocess = T.Compose(self.transforms)
         self.to_pil = T.ToPILImage()
 
-        model_name = get_model_name(w)
-
         if w.suffix == '.pt':
             model_url = 'https://drive.google.com/uc?id=1SigwBE6mPdqiJMqhuIY4aqC7--5CsMal' #'osnet_ain_x1_0_msmt17.pt'
             if not file_exists(w) and model_url is not None:
@@ -156,7 +154,6 @@ class ReIDDetectMultiBackend(nn.Module):
 
         # Build model
         self.model = build_model(
-            model_name,
             num_classes=1,
             pretrained=not (w and w.is_file()),
             use_gpu=device

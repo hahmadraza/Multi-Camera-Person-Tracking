@@ -3,7 +3,7 @@ from __future__ import absolute_import
 from .osnet_ain import *
 
 def build_model(
-    name, num_classes, loss='softmax', pretrained=True, use_gpu=True
+    num_classes, loss='softmax', pretrained=True, use_gpu=True
 ):
     """A function wrapper for building a model.
 
